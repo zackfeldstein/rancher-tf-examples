@@ -1,0 +1,44 @@
+# Rancher Configuration
+rancher_api_url   = "https://your-rancher-server.com"
+rancher_token_key = "your-rancher-api-token-here"
+rancher_insecure  = false
+
+# Cluster Configuration
+cluster_name        = "my-rke2-cluster"
+kubernetes_version  = "v1.28.8+rke2r1"
+cluster_description = "Production RKE2 cluster"
+
+# Node Configuration
+control_plane_count = 3
+worker_count        = 7
+node_template_id    = "nt-xxxxx:your-node-template-id"
+
+# Hostname Prefixes
+control_plane_hostname_prefix = "cp"
+worker_hostname_prefix        = "worker"
+
+# Network Configuration
+cluster_cidr   = "10.42.0.0/16"
+service_cidr   = "10.43.0.0/16"
+cluster_dns    = "10.43.0.10"
+cluster_domain = "cluster.local"
+
+# Security
+enable_network_policy = true
+# default_pod_security_policy_template_id = "your-psp-template-id"
+
+# Metadata
+labels = {
+  environment = "production"
+  team        = "devops"
+}
+
+annotations = {
+  "managed-by" = "terraform"
+}
+
+tags = {
+  Environment = "production"
+  Team        = "devops"
+  Project     = "kubernetes"
+} 
