@@ -77,26 +77,28 @@ variable "worker_hostname_prefix" {
 }
 
 # Network Configuration
+# Note: These variables are not directly supported by the rancher2_cluster resource
+# but are kept for reference and potential future use with RKE2 config files
 variable "cluster_cidr" {
-  description = "CIDR range for cluster pods"
+  description = "CIDR range for cluster pods (for reference only)"
   type        = string
   default     = "10.42.0.0/16"
 }
 
 variable "service_cidr" {
-  description = "CIDR range for cluster services"
+  description = "CIDR range for cluster services (for reference only)"
   type        = string
   default     = "10.43.0.0/16"
 }
 
 variable "cluster_dns" {
-  description = "Cluster DNS service IP"
+  description = "Cluster DNS service IP (for reference only)"
   type        = string
   default     = "10.43.0.10"
 }
 
 variable "cluster_domain" {
-  description = "Cluster domain"
+  description = "Cluster domain (for reference only)"
   type        = string
   default     = "cluster.local"
 }
@@ -108,8 +110,9 @@ variable "enable_network_policy" {
   default     = false
 }
 
+# Note: Pod security policies are deprecated in favor of Pod Security Standards
 variable "default_pod_security_policy_template_id" {
-  description = "Default pod security policy template ID"
+  description = "Default pod security policy template ID (deprecated - use Pod Security Standards instead)"
   type        = string
   default     = null
 }

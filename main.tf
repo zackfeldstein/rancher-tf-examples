@@ -5,22 +5,10 @@ resource "rancher2_cluster" "rke2_cluster" {
 
   rke2_config {
     version = var.kubernetes_version
-    
-    upgrade_strategy {
-      control_plane_concurrency = "1"
-      worker_concurrency        = "1"
-    }
   }
 
-  # Network configuration
-  cluster_cidr    = var.cluster_cidr
-  service_cidr    = var.service_cidr
-  cluster_dns     = var.cluster_dns
-  cluster_domain  = var.cluster_domain
-
   # Security
-  enable_network_policy                     = var.enable_network_policy
-  default_pod_security_policy_template_id  = var.default_pod_security_policy_template_id
+  enable_network_policy = var.enable_network_policy
 
   # Metadata
   labels      = var.labels

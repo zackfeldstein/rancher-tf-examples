@@ -26,24 +26,6 @@ output "kube_config" {
   sensitive   = true
 }
 
-output "cluster_ca_certificate" {
-  description = "CA certificate for the cluster"
-  value       = rancher2_cluster_sync.rke2_cluster_sync.ca_crt
-  sensitive   = true
-}
-
-output "cluster_client_certificate" {
-  description = "Client certificate for the cluster"
-  value       = rancher2_cluster_sync.rke2_cluster_sync.client_cert
-  sensitive   = true
-}
-
-output "cluster_client_key" {
-  description = "Client key for the cluster"
-  value       = rancher2_cluster_sync.rke2_cluster_sync.client_key
-  sensitive   = true
-}
-
 # Registration Information
 output "cluster_registration_token" {
   description = "Registration token for adding nodes to the cluster"
@@ -83,18 +65,13 @@ output "worker_nodes" {
   value       = var.worker_count
 }
 
-# Network Information
+# Network Information (from variables since not available from cluster resource)
 output "cluster_cidr" {
-  description = "CIDR range for cluster pods"
-  value       = rancher2_cluster.rke2_cluster.cluster_cidr
+  description = "CIDR range for cluster pods (from variables)"
+  value       = var.cluster_cidr
 }
 
 output "service_cidr" {
-  description = "CIDR range for cluster services"
-  value       = rancher2_cluster.rke2_cluster.service_cidr
-}
-
-output "cluster_endpoint" {
-  description = "Cluster API endpoint"
-  value       = rancher2_cluster_sync.rke2_cluster_sync.api_endpoint
+  description = "CIDR range for cluster services (from variables)"
+  value       = var.service_cidr
 } 
